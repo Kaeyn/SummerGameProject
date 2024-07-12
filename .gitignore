@@ -10,6 +10,19 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 
+.DS_Store
+Library/
+obj/
+*.csproj
+*.pidb
+*.sln
+*.suo
+Temp/
+.vs/
+*.user
+MemoryCaptures/
+.vsconfig
+UserSettings/
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
