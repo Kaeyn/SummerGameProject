@@ -10,19 +10,28 @@ public class Enemy : MonoBehaviour
     protected LogicGameHandler logicGameHandler;
     
     protected Rigidbody2D rigidbody2D;
+    [SerializeField] float timer;
+    float counter = 0;
     public void takeDamage(float damage){
         health -= damage;
     }
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         rigidbody2D = transform.GetComponent<Rigidbody2D>();
         logicGameHandler = GameObject.Find("GameLogicHandler").GetComponent<LogicGameHandler>();
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
-        
+        counter += Time.deltaTime;
+        if(counter > timer){
+            Destroy(gameObject);
+        }
+        if(health <= 0){
+            logicGameHandler.gainPoint();
+            Destroy(gameObject);
+        }
     }
 }
