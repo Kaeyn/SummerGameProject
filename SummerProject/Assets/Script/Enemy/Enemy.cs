@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
     float counter = 0;
     public void takeDamage(float damage){
         health -= damage;
-    }
+    }   
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -27,10 +27,6 @@ public class Enemy : MonoBehaviour
     {
         counter += Time.deltaTime;
         if(counter > timer){
-            Destroy(gameObject);
-        }
-        if(health <= 0){
-            logicGameHandler.gainPoint();
             Destroy(gameObject);
         }
     }

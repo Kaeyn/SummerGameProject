@@ -17,7 +17,7 @@ public class Rabbit : Enemy
     // Update is called once per frame
     void FixedUpdate() {
         if(!logicGameHandler.isGameOver){
-        rigidbody2D.velocity = new Vector2(Vector2.left.normalized.x * speed,Vector2.left.normalized.y * speed) ;
+            rigidbody2D.velocity = new Vector2(Vector2.left.normalized.x * speed,Vector2.left.normalized.y * speed) ;
         }else{
             rigidbody2D.velocity = new Vector2(0,0);
         }
@@ -25,5 +25,9 @@ public class Rabbit : Enemy
     protected override void Update()
     {
         base.Update();
+        if(health <= 0){
+            logicGameHandler.gainPoint(10);
+            Destroy(gameObject);
+        }
     }
 }
