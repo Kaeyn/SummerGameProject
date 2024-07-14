@@ -2,22 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rabbit : MonoBehaviour
+public class Rabbit : Enemy
 {
     [SerializeField] float timer;
-    [SerializeField] float speed;
-    Rigidbody2D rigidbody2D;
     float counter = 0;
-    [SerializeField] float health = 5;
-    LogicGameHandler logicGameHandler;
-    public void takeDamage(float damage){
-        health -= damage;
-    }
+    
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody2D = transform.GetComponent<Rigidbody2D>();
-        logicGameHandler = GameObject.Find("GameLogicHandler").GetComponent<LogicGameHandler>();
+        
     }
 
     // Update is called once per frame

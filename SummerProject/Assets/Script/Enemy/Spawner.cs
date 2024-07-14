@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spanwer : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
     [SerializeField] float timer;
     private float counter = 0;
