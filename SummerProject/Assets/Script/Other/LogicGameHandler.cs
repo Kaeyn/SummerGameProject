@@ -2,15 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LogicGameHandler : MonoBehaviour
 {
-    [SerializeField] GameObject player, spawner;
+    [SerializeField] GameObject player;
+    [SerializeField] List<GameObject> spawners;
     [SerializeField] TMP_Text mainText, score, btnText, countdown;
     [SerializeField] Button button;
-    float timer = 3;
+    float countdownTimer = 3;
+    
     string gameName = "Rapit Dance";
 
     int point = 0;
@@ -18,10 +21,15 @@ public class LogicGameHandler : MonoBehaviour
     bool isCountingDown = false;
     bool isStarted = false;
     public bool isGameOver = false;
-    void Start()
-    {
+    [SerializeField] float interval;
+    float cdInterval;
+
+    void Start(){
         player.SetActive(false);
-        spawner.SetActive(false);
+        foreach (var spawner in spawners)
+        {
+            spawner.SetActive(false);
+        }
         mainText.gameObject.SetActive(true);
         score.gameObject.SetActive(false);
         button.gameObject.SetActive(true);
@@ -29,22 +37,33 @@ public class LogicGameHandler : MonoBehaviour
         mainText.text = gameName;
         btnText.text = "Start";
         score.text = point.ToString();
+        cdInterval = interval;
     }
     private void Update() {
         score.text = point.ToString();
-        if(isCountingDown && timer >= 0){
-            countdown.text = Math.Round(timer).ToString();
-            timer -= Time.deltaTime;
+        if(isCountingDown && countdownTimer >= 0){
+            countdown.text = Math.Round(countdownTimer).ToString();
+            countdownTimer -= Time.deltaTime;
         }
-        if(timer < 0 && !isStarted){
+        if(countdownTimer < 0 && !isStarted && !isGameOver){
             startGame();
             isStarted = true;
+        }
+        if(isStarted){
+            cdInterval -= Time.deltaTime;
+            if(cdInterval <= 0){
+                gainPoint(1);
+                cdInterval = interval;
+            }
         }
     }
     public void play(){
         isCountingDown = true;
         player.SetActive(false);
-        spawner.SetActive(false);
+        foreach (var spawner in spawners)
+        {
+            spawner.SetActive(false);
+        }
         mainText.gameObject.SetActive(false);
         score.gameObject.SetActive(false);
         button.gameObject.SetActive(false);
@@ -53,20 +72,26 @@ public class LogicGameHandler : MonoBehaviour
     public void startGame(){
         isCountingDown = false;
         player.SetActive(true);
-        spawner.SetActive(true);
+        foreach (var spawner in spawners)
+        {
+            spawner.SetActive(true);
+        }
         mainText.gameObject.SetActive(false);
         score.gameObject.SetActive(true);
         button.gameObject.SetActive(false);
         countdown.gameObject.SetActive(false);
     }
-    public void gainPoint(){
-        point += 1;
+    public void gainPoint(int pointGained){
+        point += pointGained;
     }
     public void gameover(){
         isGameOver = true;
         isStarted = false;
         player.SetActive(true);
-        spawner.SetActive(true);
+        foreach (var spawner in spawners)
+        {
+            spawner.SetActive(true);
+        }
         mainText.gameObject.SetActive(true);
         mainText.text = "Game Over";
         btnText.text = "Restart";
@@ -75,7 +100,7 @@ public class LogicGameHandler : MonoBehaviour
         countdown.gameObject.SetActive(false);
     }
     public void restart(){
-        timer = 3;
+        countdownTimer = 3;
         // player.SetActive(true);
         // spawner.SetActive(true);
         // canvas.SetActive(false);
