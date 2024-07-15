@@ -12,6 +12,7 @@ public class LogicGameHandler : MonoBehaviour
     [SerializeField] List<GameObject> spawners;
     [SerializeField] TMP_Text mainText, score, btnText, countdown;
     [SerializeField] Button button;
+    [SerializeField] Slider slider;
     float countdownTimer = 3;
     
     string gameName = "Rapit Dance";
@@ -31,6 +32,7 @@ public class LogicGameHandler : MonoBehaviour
             spawner.SetActive(false);
         }
         mainText.gameObject.SetActive(true);
+        slider.gameObject.SetActive(false);
         score.gameObject.SetActive(false);
         button.gameObject.SetActive(true);
         countdown.gameObject.SetActive(false);
@@ -78,6 +80,7 @@ public class LogicGameHandler : MonoBehaviour
         }
         mainText.gameObject.SetActive(false);
         score.gameObject.SetActive(true);
+        slider.gameObject.SetActive(true);
         button.gameObject.SetActive(false);
         countdown.gameObject.SetActive(false);
     }

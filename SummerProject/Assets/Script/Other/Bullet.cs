@@ -28,7 +28,16 @@ public class Bullet : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "enemy"){
-            other.gameObject.GetComponent<Rabbit>().takeDamage(damage);
+            Rabbit rabbit = other.gameObject.GetComponent<Rabbit>();
+            if(rabbit != null)
+            {
+                rabbit.takeDamage(damage);
+            }
+            CapyScript capy = other.gameObject.GetComponent<CapyScript>();
+            if (capy != null)
+            {
+                capy.takeDamage(damage);
+            }
             Destroy(gameObject);
         }
     }

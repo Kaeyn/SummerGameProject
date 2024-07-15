@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class PlayerStat : MonoBehaviour
 {
-    [SerializeField] int point = 0;
+    public float stamina = 100;
+    public float baseStamina;
     // Start is called before the first frame update
     void Start()
     {
-        
+        baseStamina = stamina;
     }
 
     // Update is called once per frame
     void Update()
     {
-    }
-    public void increasePoint(){
-        point++;
+
     }
 }
