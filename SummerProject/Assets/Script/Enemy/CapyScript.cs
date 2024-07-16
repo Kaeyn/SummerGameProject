@@ -7,9 +7,11 @@ public class CapyScript : Enemy
     // Start is called before the first frame update
     GameObject player;
     Vector3 direction = Vector3.zero;
+
     [SerializeField] GameObject projectilePrefab;
     public float atackCoolDown = 2f;
     private float attackTimer;
+
     private Animator animator;
     public float scaleUpDuration = 2f;
     private bool canAttack = false;
@@ -32,6 +34,7 @@ public class CapyScript : Enemy
             attackTimer = atackCoolDown;
         }
     }
+
     void Attack()
     {
         if(player != null )
@@ -39,9 +42,11 @@ public class CapyScript : Enemy
             animator.SetTrigger("Shooting");
         }
     }
+
     void SpawnProjectile()
     {
         Vector3 spawnPos = transform.position;
+
         Vector3 direction = (player.transform.position - spawnPos).normalized;
         GameObject projectile = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
         projectile.GetComponent<Projectile>().SetDirection(direction);
