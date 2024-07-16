@@ -45,8 +45,8 @@ public class BossBasic : Enemy
         {
             if (timer < 0)
             {
-                // firstSkill(skill);
-                secondSkill(skill);
+                firstSkill(skill);
+                // secondSkill(skill);
             }
         }
     }
