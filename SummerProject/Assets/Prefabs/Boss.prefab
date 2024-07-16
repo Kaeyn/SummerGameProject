@@ -168,6 +168,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2708748297632822634}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1ebcd9b67a2e4c4590e1fba67446be9, type: 3}
+  m_Script: {fileID: 11500000, guid: f4c94494347377242b789613099ef2de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 10
+  health: 50
+  timer: 5
+  maxHealth: 100
+  amplitude: 2.5
+  initialY: 0
+  firstSkillHolder: {fileID: 307909679764087304, guid: f56e5d879d172004d82bd63f8dfc3d24, type: 3}
