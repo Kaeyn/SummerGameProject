@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class LogicGameHandler : MonoBehaviour
 {
-    [SerializeField] GameObject player;
+    [SerializeField] GameObject player, boss;
     [SerializeField] List<GameObject> spawners;
     [SerializeField] TMP_Text mainText, score, btnText, countdown;
     [SerializeField] Button button;
@@ -27,6 +27,7 @@ public class LogicGameHandler : MonoBehaviour
 
     void Start(){
         player.SetActive(false);
+        boss.SetActive(false);
         foreach (var spawner in spawners)
         {
             spawner.SetActive(false);
@@ -62,6 +63,7 @@ public class LogicGameHandler : MonoBehaviour
     public void play(){
         isCountingDown = true;
         player.SetActive(false);
+        boss.SetActive(false);
         foreach (var spawner in spawners)
         {
             spawner.SetActive(false);
@@ -74,6 +76,7 @@ public class LogicGameHandler : MonoBehaviour
     public void startGame(){
         isCountingDown = false;
         player.SetActive(true);
+        boss.SetActive(true);
         foreach (var spawner in spawners)
         {
             spawner.SetActive(true);
@@ -91,6 +94,7 @@ public class LogicGameHandler : MonoBehaviour
         isGameOver = true;
         isStarted = false;
         player.SetActive(true);
+        boss.SetActive(true);
         foreach (var spawner in spawners)
         {
             spawner.SetActive(true);
