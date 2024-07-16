@@ -152,7 +152,7 @@ MonoBehaviour:
   maxHealth: 100
   amplitude: 0
   initialY: 0
-  timer: 5
+  timeCounter: 5
   firstSkillHolder: {fileID: 307909679764087304, guid: f56e5d879d172004d82bd63f8dfc3d24, type: 3}
   xSkillOffset: -3
   ySkillOffset: -1

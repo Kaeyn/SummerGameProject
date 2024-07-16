@@ -6,7 +6,7 @@ using UnityEngine;
 public class BossBasic : Enemy
 {
     BossPhase bossPhase;
-    [SerializeField] float maxHealth, amplitude, initialY,timer;
+    [SerializeField] float maxHealth, amplitude, initialY;
     [SerializeField] GameObject firstSkillHolder;
     [SerializeField] float xSkillOffset;
     [SerializeField] float ySkillOffset;
@@ -23,7 +23,6 @@ public class BossBasic : Enemy
         base.Start();
         bossPhase = BossPhase.FirstPhase;
         health = maxHealth;
-        timer = 5f;
     }
         
     // Update is called once per frame
