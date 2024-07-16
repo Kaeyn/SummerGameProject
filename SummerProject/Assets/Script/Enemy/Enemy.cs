@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     protected LogicGameHandler logicGameHandler;
     
     protected Rigidbody2D rigidbody2D;
-    [SerializeField] float timer;
+    [SerializeField] public float timer;
     float counter = 0;
     public void takeDamage(float damage){
         health -= damage;
@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     protected virtual void Start()
     {
         rigidbody2D = transform.GetComponent<Rigidbody2D>();
-        logicGameHandler = GameObject.Find("GameLogicHandler").GetComponent<LogicGameHandler>();
+        // logicGameHandler = GameObject.Find("GameLogicHandler").GetComponent<LogicGameHandler>();
     }
 
     // Update is called once per frame
