@@ -8,8 +8,8 @@ public class BossBasic : Enemy
     BossPhase bossPhase;
     [SerializeField] float maxHealth, amplitude, initialY;
     [SerializeField] GameObject firstSkillHolder;
-    private float xSkillOffset = -2.5f;
-    private float ySkillOffset = -1f;
+    [SerializeField] float xSkillOffset;
+    [SerializeField] float ySkillOffset;
     private bool isChanneling = false;
 
     enum BossPhase

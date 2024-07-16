@@ -18,7 +18,7 @@ public class firstBossSkill : Projectile
             targetPosition = new Vector3(player.transform.position.x - 5, player.transform.position.y, player.transform.position.z);
         }
         else{
-            targetPosition = new Vector3(-7,0,0);
+            targetPosition = new Vector3(-12,0,0);
         }
     }
     void Update()
