@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
         sprintCooldownTime = baseSprintCooldownTime;
 
         rigidbody2D = transform.GetComponent<Rigidbody2D>();
-        logicGameHandler = GameObject.Find("GameLogicHandler").GetComponent<LogicGameHandler>();
+        // logicGameHandler = GameObject.Find("GameLogicHandler").GetComponent<LogicGameHandler>();
         playerStat = GetComponent<PlayerStat>();
         baseSpeed = speed;
     }
