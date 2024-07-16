@@ -947,9 +947,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3573cfdeb89a344bd53556f89fb36d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 0
+  timer: 10
   thingToSpanwn: {fileID: 2708748297632822634, guid: bb84ac7831c29f64c8fa5c98185fa63f, type: 3}
-  randomRangeX: 1
+  randomRangeX: 0
   randomRangeY: 1
 --- !u!4 &584219247
 Transform:
@@ -959,7 +959,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 584219245}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6, y: -1, z: 6.2260494}
+  m_LocalPosition: {x: 8, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
