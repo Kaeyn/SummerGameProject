@@ -22,6 +22,7 @@ public class LogicGameHandler : MonoBehaviour
     bool isCountingDown = false;
     bool isStarted = false;
     public bool isGameOver = false;
+    public bool isBossSpawn = false;
     [SerializeField] float interval;
     float cdInterval;
 
@@ -101,6 +102,7 @@ public class LogicGameHandler : MonoBehaviour
         score.gameObject.SetActive(true);
         button.gameObject.SetActive(true);
         countdown.gameObject.SetActive(false);
+        Time.timeScale = 0;
     }
     public void restart(){
         countdownTimer = 3;
