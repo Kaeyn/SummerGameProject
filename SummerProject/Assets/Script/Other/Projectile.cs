@@ -18,14 +18,25 @@ using UnityEngine;
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            /*if (other.CompareTag("Player"))
+        /*if (other.CompareTag("Player"))
+        {
+            // Handle collision with player
+            other.GetComponent<LogicGameHandler>().gameover(); // Destroy the projectile
+        }*/
+            if (other.CompareTag("blockable"))
             {
-                // Handle collision with player
-                other.GetComponent<LogicGameHandler>().gameover(); // Destroy the projectile
-            }*/
+                Destroy(gameObject);
+            }
         }
-        // Use this for initialization
-        void Start()
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.tag == "blockable")
+            {
+                Destroy(gameObject);
+            }
+        }
+    // Use this for initialization
+    void Start()
         {
 
         }

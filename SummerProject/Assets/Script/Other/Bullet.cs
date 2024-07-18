@@ -50,6 +50,10 @@ public class Bullet : MonoBehaviour
             }
             Destroy(gameObject);
         }
+        else if (other.gameObject.tag == "blockable")
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -66,7 +70,12 @@ public class Bullet : MonoBehaviour
             {
                 capy.takeDamage(damage);
             }
+            BossBasic boss = collision.gameObject.GetComponent<BossBasic>();
+            if (boss != null)
+            {
+                boss.takeDamage(damage);
+            }
             Destroy(gameObject);
-        }
+        }  
     }
 }
