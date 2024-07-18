@@ -7,7 +7,7 @@ public class BossBasic : Enemy
 {
     BossPhase bossPhase;
     [SerializeField] float maxHealth, amplitude, initialY;
-    [SerializeField] GameObject firstSkillHolder;
+    [SerializeField] List<GameObject> SkillHolder;
     [SerializeField] float xSkillOffset;
     [SerializeField] float ySkillOffset;
     private bool isChanneling = false;
@@ -24,7 +24,7 @@ public class BossBasic : Enemy
         bossPhase = BossPhase.FirstPhase;
         health = maxHealth;
     }
-        
+
     // Update is called once per frame
     protected override void Update()
     {
@@ -41,18 +41,29 @@ public class BossBasic : Enemy
     void SkillTimer()
     {
         timer -= Time.deltaTime;
-        if (timer < 0)
+        foreach (var skill in SkillHolder)
         {
-            firstSkill();
+            if (timer < 0)
+            {
+                firstSkill(skill);
+                // secondSkill(skill);
+            }
         }
     }
-    void firstSkill()
+    void firstSkill(GameObject skill)
     {
         for (int i = 0; i < 3; i++)
         {
             Vector3 spawnPosition = new Vector3(transform.position.x + xSkillOffset, transform.position.y + i * ySkillOffset, transform.position.z);
-            Instantiate(firstSkillHolder, spawnPosition, Quaternion.identity);
+            Instantiate(skill, spawnPosition, Quaternion.identity);
         }
+        timer = 5f;
+    }
+    void secondSkill(GameObject skill)
+    {
+
+        Vector3 spawnPosition = new Vector3(transform.position.x + xSkillOffset, transform.position.y  * ySkillOffset, transform.position.z);
+        Instantiate(skill, spawnPosition, Quaternion.identity);
         timer = 5f;
     }
     void BossMovement()
