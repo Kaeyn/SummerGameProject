@@ -33,6 +33,12 @@ public class CapyScript : Enemy
             Attack();
             attackTimer = atackCoolDown;
         }
+
+        if(health <= 0)
+        {
+            logicGameHandler.gainPoint(10);
+            Destroy(gameObject);
+        }
     }
 
     void Attack()
