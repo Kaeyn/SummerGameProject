@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 8400659213421331349, guid: 2604b1e7ff809094697e558834cde0bd, type: 3}
-  spawnRate: 0.1
+  spawnRate: 0.3
   coneAngle: 45
   duration: 8
   projectileSpeed: 10
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 8400659213421331349, guid: 2604b1e7ff809094697e558834cde0bd, type: 3}
-  spawnRate: 0.1
+  spawnRate: 0.3
   coneAngle: 45
   duration: 8
   projectileSpeed: 10
@@ -232,7 +232,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5824408225094895968}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.38, y: 3.5471263, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

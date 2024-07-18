@@ -191,6 +191,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1216511154288824162, guid: bb84ac7831c29f64c8fa5c98185fa63f, type: 3}
+      propertyPath: skillSpawnPos.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216511154288824162, guid: bb84ac7831c29f64c8fa5c98185fa63f, type: 3}
+      propertyPath: skillSpawnPos.y
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216511154288824162, guid: bb84ac7831c29f64c8fa5c98185fa63f, type: 3}
       propertyPath: SkillHolder.Array.size
       value: 1
       objectReference: {fileID: 0}

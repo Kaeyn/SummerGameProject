@@ -149,10 +149,14 @@ MonoBehaviour:
   speed: 2
   health: 20
   timer: 5
-  maxHealth: 20
+  bossPhase: 0
   amplitude: 2.5
   initialY: 0
-  SkillHolder:
+  firstSkillHolder:
+  - {fileID: 307909679764087304, guid: f56e5d879d172004d82bd63f8dfc3d24, type: 3}
+  - {fileID: 3407946157756577588, guid: 801d0737e13ffa04997fb43ce673963c, type: 3}
+  secondSkillHolder:
+  - {fileID: 307909679764087304, guid: f56e5d879d172004d82bd63f8dfc3d24, type: 3}
+  - {fileID: 3407946157756577588, guid: 801d0737e13ffa04997fb43ce673963c, type: 3}
   - {fileID: 5824408225094895968, guid: d31e28ca7e578234e88a85899e030808, type: 3}
-  xSkillOffset: -3
-  ySkillOffset: -1
+  skillSpawnPos: {x: 5, y: 3.5, z: 0}
