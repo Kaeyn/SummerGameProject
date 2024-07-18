@@ -12,6 +12,7 @@ public class BossBasic : Enemy
     [SerializeField] float ySkillOffset;
     private bool isChanneling = false;
 
+    private Transform coneSkillSpawnPos;
     enum BossPhase
     {
         FirstPhase,
@@ -21,7 +22,9 @@ public class BossBasic : Enemy
     protected override void Start()
     {
         base.Start();
+        coneSkillSpawnPos = GameObject.Find("ConeSkillSpawnPos").transform;
         bossPhase = BossPhase.FirstPhase;
+        logicGameHandler.isBossSpawn = true; 
         health = maxHealth;
     }
 
@@ -45,8 +48,15 @@ public class BossBasic : Enemy
         {
             if (timer < 0)
             {
-                firstSkill(skill);
+                /*firstSkill(skill);*/
                 // secondSkill(skill);
+            }
+            if(bossPhase == BossPhase.FinalPhase)
+            {
+                if (timer < 0)
+                {
+                    coneSkill(skill);
+                }
             }
         }
     }
@@ -65,6 +75,13 @@ public class BossBasic : Enemy
         Vector3 spawnPosition = new Vector3(transform.position.x + xSkillOffset, transform.position.y  * ySkillOffset, transform.position.z);
         Instantiate(skill, spawnPosition, Quaternion.identity);
         timer = 5f;
+    }
+
+    void coneSkill(GameObject skill)
+    {
+        Vector3 spawnPosition = new Vector3(coneSkillSpawnPos.position.x, coneSkillSpawnPos.position.y , coneSkillSpawnPos.position.z);
+        Instantiate(skill, spawnPosition, Quaternion.identity);
+        timer = 13f;
     }
     void BossMovement()
     {
