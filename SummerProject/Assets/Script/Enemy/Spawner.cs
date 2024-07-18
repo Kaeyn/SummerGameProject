@@ -7,6 +7,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] float timer;
+    [SerializeField] float spawnRate;
     float counter = 0;
     [SerializeField]  GameObject thingToSpanwn;
 
@@ -26,13 +27,16 @@ public class Spawner : MonoBehaviour
     {
         if (!logicGameHandler.isBossSpawn)
         {
-            counter += Time.deltaTime;
-            float randomX = UnityEngine.Random.Range(-randomRangeX, randomRangeX);
-            float randomY = UnityEngine.Random.Range(-randomRangeY, randomRangeY);
-            if (counter > timer)
-            {
-                Instantiate(thingToSpanwn, new Vector3(transform.position.x + randomX, transform.position.y + randomY, transform.position.z), Quaternion.identity);
-                counter = 0;
+            timer -= Time.deltaTime;
+            if(timer <= 0){
+                counter += Time.deltaTime;
+                float randomX = UnityEngine.Random.Range(-randomRangeX, randomRangeX);
+                float randomY = UnityEngine.Random.Range(-randomRangeY, randomRangeY);
+                if (counter > spawnRate)
+                {
+                    Instantiate(thingToSpanwn, new Vector3(transform.position.x + randomX, transform.position.y + randomY, transform.position.z), Quaternion.identity);
+                    counter = 0;
+                }
             }
         }
         

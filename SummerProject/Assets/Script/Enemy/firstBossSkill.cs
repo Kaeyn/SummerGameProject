@@ -11,10 +11,10 @@ public class firstBossSkill : Projectile
     private GameObject player;
     void Start()
     {
-        
+        player = GameObject.Find("Player");
         if (player != null)
         {
-            targetPosition = new Vector3(player.transform.position.x - 5, player.transform.position.y, player.transform.position.z);
+            targetPosition = new Vector3(player.transform.position.x - 100, player.transform.position.y - 100, player.transform.position.z);
         }
         else{
             targetPosition = new Vector3(-12,0,0);
