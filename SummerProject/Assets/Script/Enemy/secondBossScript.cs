@@ -4,7 +4,7 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class secondBossScript : Projectile
+public class secondBossScript : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] GameObject upperOrb, belowOrb, laser;
@@ -25,7 +25,8 @@ public class secondBossScript : Projectile
     {
         if (!orbsCollided)
         {
-            ActivateLaser();
+            if(orbA && orbB)
+                ActivateLaser();
         }
         else
         {
@@ -46,7 +47,6 @@ public class secondBossScript : Projectile
     private void HandleCollisionTimer()
     {
         collisionTimer -= Time.deltaTime;
-
         if (collisionTimer <= 0)
         {
             Destroy(orbA);
