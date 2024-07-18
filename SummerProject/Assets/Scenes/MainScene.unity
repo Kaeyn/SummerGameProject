@@ -148,7 +148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7245514}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.12, y: 2.9, z: 0}
+  m_LocalPosition: {x: 4.97, y: -0.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -167,41 +167,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3573cfdeb89a344bd53556f89fb36d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 10
+  timer: 5
+  spawnRate: 5
   thingToSpanwn: {fileID: 7821898304608787954, guid: f851564b5688a474884c71d387fdedb6, type: 3}
   randomRangeX: 1
-  randomRangeY: 1
---- !u!1 &18674931
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 18674932}
-  m_Layer: 0
-  m_Name: ConeSkillSpawnPos
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &18674932
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 18674931}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.41, y: 3.1, z: 0.08240927}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  randomRangeY: 4
 --- !u!1 &50666593
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,6 +607,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 349072696}
   m_CullTransparentMesh: 1
+--- !u!1 &410552959
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 410552961}
+  - component: {fileID: 410552960}
+  m_Layer: 0
+  m_Name: SurikenSpawnerVertical
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &410552960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410552959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e3573cfdeb89a344bd53556f89fb36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 1
+  spawnRate: 4
+  thingToSpanwn: {fileID: 1067026459249195839, guid: 2eaee0b780e90064d9913e09b9dc4c62, type: 3}
+  randomRangeX: 0
+  randomRangeY: 4
+--- !u!4 &410552961
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410552959}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.55, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,8 +943,8 @@ MonoBehaviour:
   - {fileID: 1230806927}
   - {fileID: 1442536572}
   - {fileID: 7245514}
-  - {fileID: 7245514}
   - {fileID: 584219245}
+  - {fileID: 410552959}
   mainText: {fileID: 524240314}
   score: {fileID: 692455149}
   btnText: {fileID: 302156804}
@@ -979,7 +998,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3573cfdeb89a344bd53556f89fb36d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 10
+  timer: 20
+  spawnRate: 0
   thingToSpanwn: {fileID: 2708748297632822634, guid: bb84ac7831c29f64c8fa5c98185fa63f, type: 3}
   randomRangeX: 0
   randomRangeY: 1
@@ -1424,9 +1444,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3573cfdeb89a344bd53556f89fb36d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 1
+  timer: 5
+  spawnRate: 1
   thingToSpanwn: {fileID: 4264015445410433302, guid: 3546e89d60084054cb893580d8a980ae, type: 3}
-  randomRangeX: 4
+  randomRangeX: 2
   randomRangeY: 0
 --- !u!1 &1335110029
 GameObject:
@@ -1640,6 +1661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 1
+  spawnRate: 1
   thingToSpanwn: {fileID: 4264015445410433302, guid: 75a46c4bda8c8254ab8c856edd2cb63c, type: 3}
   randomRangeX: 0
   randomRangeY: 4

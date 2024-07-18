@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class BossBasic : Enemy
 {
-    BossPhase bossPhase;
-    [SerializeField] float maxHealth, amplitude, initialY;
-    [SerializeField] List<GameObject> SkillHolder;
-    [SerializeField] float xSkillOffset;
-    [SerializeField] float ySkillOffset;
+    [SerializeField] BossPhase bossPhase;
+    float maxHealth;
+    [SerializeField] float amplitude, initialY;
+    [SerializeField] List<GameObject> firstSkillHolder;
+    [SerializeField] List<GameObject> secondSkillHolder;
+    [SerializeField] Vector3 skillSpawnPos;
+    private GameObject currentSkill;
+    private bool wasDead = false;
     private bool isChanneling = false;
 
-    private Transform coneSkillSpawnPos;
+    int skillIndex = 0;
     enum BossPhase
     {
         FirstPhase,
@@ -22,19 +26,20 @@ public class BossBasic : Enemy
     protected override void Start()
     {
         base.Start();
-        coneSkillSpawnPos = GameObject.Find("ConeSkillSpawnPos").transform;
         bossPhase = BossPhase.FirstPhase;
         logicGameHandler.isBossSpawn = true; 
-        health = maxHealth;
+        maxHealth = health;
+        castSkill();
     }
 
     // Update is called once per frame
     protected override void Update()
     {
-        SkillTimer();
-        if (health <= 0)
-        {
+        // SkillTimer();
+        if (health <= 0){
             MoveToNextPhase();
+        } else{
+            SkillTimer() ;
         }
         if (!isChanneling)
         {
@@ -44,45 +49,52 @@ public class BossBasic : Enemy
     void SkillTimer()
     {
         timer -= Time.deltaTime;
-        foreach (var skill in SkillHolder)
-        {
-            if (timer < 0)
-            {
-                /*firstSkill(skill);*/
-                // secondSkill(skill);
-            }
-            if(bossPhase == BossPhase.FinalPhase)
-            {
-                if (timer < 0)
-                {
-                    coneSkill(skill);
-                }
-            }
+        if (timer <= 0){
+            castSkill();
+            timer = 10f;
         }
     }
-    void firstSkill(GameObject skill)
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            Vector3 spawnPosition = new Vector3(transform.position.x + xSkillOffset, transform.position.y + i * ySkillOffset, transform.position.z);
-            Instantiate(skill, spawnPosition, Quaternion.identity);
+    void castSkill(){
+        // SetRunning(false);
+        List<GameObject> listToSpawn = new List<GameObject>();
+        if(bossPhase == BossPhase.FirstPhase){
+            listToSpawn = firstSkillHolder;
+        }else if(bossPhase == BossPhase.FinalPhase){
+            listToSpawn = secondSkillHolder;
         }
-        timer = 5f;
+        if(listToSpawn.Count - 1 == skillIndex){
+            skillIndex = 0;
+        }else{
+            skillIndex++;
+        }
+        if(currentSkill){
+            Destroy(currentSkill);
+        }
+        currentSkill = Instantiate(listToSpawn[skillIndex], skillSpawnPos, Quaternion.identity);
     }
-    void secondSkill(GameObject skill)
-    {
+//     void firstSkill(GameObject skill)
+//     {
+//         for (int i = 0; i < 3; i++)
+//         {
+//             Vector3 spawnPosition = new Vector3(transform.position.x + xSkillOffset, transform.position.y + i * ySkillOffset, transform.position.z);
+//             Instantiate(skill, spawnPosition, Quaternion.identity);
+//         }
+//         timer = 5f;
+//     }
+//     void secondSkill(GameObject skill)
+//     {
+// Vector3 spawnPosition = new Vector3(transform.position.x + xSkillOffset, transform.position.y  * ySkillOffset, transform.position.z);
+//         Instantiate(skill, spawnPosition, Quaternion.identity);
+        
+//         timer = 5f;
+//     }
 
-        Vector3 spawnPosition = new Vector3(transform.position.x + xSkillOffset, transform.position.y  * ySkillOffset, transform.position.z);
-        Instantiate(skill, spawnPosition, Quaternion.identity);
-        timer = 5f;
-    }
-
-    void coneSkill(GameObject skill)
-    {
-        Vector3 spawnPosition = new Vector3(coneSkillSpawnPos.position.x, coneSkillSpawnPos.position.y , coneSkillSpawnPos.position.z);
-        Instantiate(skill, spawnPosition, Quaternion.identity);
-        timer = 13f;
-    }
+    // void coneSkill(GameObject skill)
+    // {
+    //     Vector3 spawnPosition = new Vector3(coneSkillSpawnPos.position.x, coneSkillSpawnPos.position.y , coneSkillSpawnPos.position.z);
+    //     Instantiate(skill, spawnPosition, Quaternion.identity);
+    //     timer = 13f;
+    // }
     void BossMovement()
     {
         float newY = initialY + Mathf.Sin(Time.time * speed) * amplitude;
@@ -102,6 +114,14 @@ public class BossBasic : Enemy
                 break;
             case BossPhase.FinalPhase:
                 //End
+                if(!wasDead){
+                    rigidbody2D.AddForce(new Vector2(-2,6),ForceMode2D.Impulse);
+                    wasDead = true;
+                    SetRunning(true);
+                    rigidbody2D.gravityScale = 1;
+                    Destroy(gameObject, 5f);
+                }
+                transform.Rotate(new Vector3(0,90,0));
                 break;
         }
     }
