@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4514064066894351329}
   - component: {fileID: -291595910899720834}
   - component: {fileID: -7436104788132977421}
-  - component: {fileID: 7699098064547905034}
+  - component: {fileID: 4662001765725360665}
   m_Layer: 0
   m_Name: healingPotion
   m_TagString: Untagged
@@ -124,7 +124,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.21}
   m_Size: {x: 0.74, y: 0.74}
   m_Direction: 0
---- !u!114 &7699098064547905034
+--- !u!114 &4662001765725360665
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,6 +137,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  health: 0
-  timer: 5
+  timer: 0
   isTargeted: 0

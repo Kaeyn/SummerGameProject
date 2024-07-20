@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealingPotion : Enemy
+public class FireRateUp : PowerUp
 {
     [SerializeField] bool isTargeted = false;
     GameObject player;
@@ -18,20 +18,9 @@ public class HealingPotion : Enemy
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!logicGameHandler.isGameOver)
-        {
-            if (!isTargeted)
-            {
-                // Set direction to move straight down
-                direction = Vector3.down;
-                isTargeted = true;
-            }
-            rigidbody2D.velocity = new Vector2(0, direction.y * speed);
-        }
-        else
-        {
-            rigidbody2D.velocity = Vector2.zero;
-        }
+        direction = Vector3.down;
+        isTargeted = true;
+        rigidbody2D.velocity = new Vector2(0, direction.y * speed);
     }
 
     protected override void Update()
