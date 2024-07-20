@@ -4,7 +4,7 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class secondBossScript : MonoBehaviour
+public class secondBossSkill : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] GameObject upperOrb, belowOrb, laser;
@@ -25,7 +25,7 @@ public class secondBossScript : MonoBehaviour
     {
         if (!orbsCollided)
         {
-            if(orbA && orbB)
+            if (orbA && orbB)
                 ActivateLaser();
         }
         else
@@ -51,7 +51,7 @@ public class secondBossScript : MonoBehaviour
         {
             Destroy(orbA);
             Destroy(orbB);
-            laserBeam = Instantiate(laser, new Vector3(-4, 0, 0), Quaternion.identity);
+            laserBeam = Instantiate(laser, new Vector3(-2, 0, 0), Quaternion.Euler(new Vector3(0, 0, 180)));
             Destroy(laserBeam, 2f);  // Destroy the laserBeam after 2 seconds
             orbsCollided = false;  // Reset if you want to repeat this behavior.
         }

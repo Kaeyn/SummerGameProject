@@ -10,7 +10,6 @@ public class ConeSpawnerSkill : MonoBehaviour
     public float duration = 15f;     // Duration to spawn projectiles
     public float projectileSpeed = 10f;
     public int projectilesPerWave = 4;
-
     public float scaleUpDuration = 2f;
     private float spawnTimer = 0f;
     private float shootTimer = 0f;
