@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 2708748297632822634}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7534576, y: 0.74901575, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.64687496, y: 0.64687496, z: 0.64687496}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -152,11 +152,12 @@ MonoBehaviour:
   bossPhase: 0
   amplitude: 2.5
   initialY: 0
+  xSkillOffset: -2
   firstSkillHolder:
-  - {fileID: 307909679764087304, guid: f56e5d879d172004d82bd63f8dfc3d24, type: 3}
-  - {fileID: 3407946157756577588, guid: 801d0737e13ffa04997fb43ce673963c, type: 3}
+  - {fileID: 8294176090438870396, guid: d11a98631abaf8d40857a8be407f4b39, type: 3}
+  - {fileID: 1220531967291986270, guid: 63d72014f217ae04cb2021678d72cac4, type: 3}
   secondSkillHolder:
-  - {fileID: 307909679764087304, guid: f56e5d879d172004d82bd63f8dfc3d24, type: 3}
+  - {fileID: 8294176090438870396, guid: d11a98631abaf8d40857a8be407f4b39, type: 3}
   - {fileID: 3407946157756577588, guid: 801d0737e13ffa04997fb43ce673963c, type: 3}
+  - {fileID: 1220531967291986270, guid: 63d72014f217ae04cb2021678d72cac4, type: 3}
   - {fileID: 5824408225094895968, guid: d31e28ca7e578234e88a85899e030808, type: 3}
-  skillSpawnPos: {x: 5, y: 3.5, z: 0}

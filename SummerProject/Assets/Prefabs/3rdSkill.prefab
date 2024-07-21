@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3407946157756577588
+--- !u!1 &1220531967291986270
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 792533272452132076}
-  - component: {fileID: 8911986197633441549}
+  - component: {fileID: 1143684769377839796}
+  - component: {fileID: 2209064810519649900}
   m_Layer: 0
-  m_Name: 2ndSkill
+  m_Name: 3rdSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &792533272452132076
+--- !u!4 &1143684769377839796
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3407946157756577588}
+  m_GameObject: {fileID: 1220531967291986270}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.21375, y: 0.21375, z: 0.21375}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8911986197633441549
+--- !u!114 &2209064810519649900
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3407946157756577588}
+  m_GameObject: {fileID: 1220531967291986270}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63cccfffd5369294497465037a65b701, type: 3}
+  m_Script: {fileID: 11500000, guid: fd31e6ddfae3fd7489c11a80fa693d4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upperOrb: {fileID: 2051645265212200182, guid: 87572b85f0257bc499670f117bfd1253, type: 3}
-  belowOrb: {fileID: 2051645265212200182, guid: 87572b85f0257bc499670f117bfd1253, type: 3}
-  laser: {fileID: 5555635865291555975, guid: b392fb46d87206f479f6dc8c152b749f, type: 3}
-  upperPosition: {x: 5, y: 4, z: 0}
-  belowPosition: {x: 5, y: -4, z: 0}
-  collidePosition: {x: 5, y: 0, z: 0}
+  laserFocus: {fileID: 8380678332310367520, guid: aeefb519cc94a8f408b43c71b8c343e0, type: 3}
+  laserBeam: {fileID: 1207054884235577211, guid: 1a8e4d7d97395f74ea9177ee8c28848d, type: 3}
+  laserBeamPos: {x: -2.5, y: 3.5, z: 0}

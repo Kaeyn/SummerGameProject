@@ -28,13 +28,13 @@ public class CapyScript : Enemy
     {
         base.Update();
         attackTimer -= Time.deltaTime;
-        if(attackTimer < 0 && canAttack)
+        if (attackTimer < 0 && canAttack)
         {
             Attack();
             attackTimer = atackCoolDown;
         }
 
-        if(health <= 0)
+        if (health <= 0)
         {
             logicGameHandler.gainPoint(10);
             Destroy(gameObject);
@@ -43,7 +43,7 @@ public class CapyScript : Enemy
 
     void Attack()
     {
-        if(player != null )
+        if (player != null)
         {
             animator.SetTrigger("Shooting");
         }
@@ -71,7 +71,7 @@ public class CapyScript : Enemy
         }
 
         transform.localScale = originalScale;
-            canAttack = true;
+        canAttack = true;
         // Ensure it's set to the final scale
     }
 }
