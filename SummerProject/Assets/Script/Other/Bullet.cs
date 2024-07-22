@@ -32,21 +32,14 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         Rabbit rabbit = other.gameObject.GetComponent<Rabbit>();
+        Enemy enemy = other.gameObject.GetComponent<Enemy>();
         CapyScript capy = other.gameObject.GetComponent<CapyScript>();
         BossBasic boss = other.gameObject.GetComponent<BossBasic>();
         if (other.gameObject.tag == "enemy")
         {
-            if (rabbit != null)
+            if (enemy != null)
             {
-                rabbit.takeDamage(damage);
-            }
-            if (capy != null)
-            {
-                capy.takeDamage(damage);
-            }
-            if (boss != null)
-            {
-                boss.takeDamage(damage);
+                enemy.takeDamage(damage);
             }
             Destroy(gameObject);
         }
@@ -58,24 +51,18 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (collision.gameObject.tag == "enemy")
         {
-            Rabbit rabbit = collision.gameObject.GetComponent<Rabbit>();
-            if (rabbit != null)
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            if (enemy != null)
             {
-                rabbit.takeDamage(damage);
-            }
-            CapyScript capy = collision.gameObject.GetComponent<CapyScript>();
-            if (capy != null)
-            {
-                capy.takeDamage(damage);
-            }
-            BossBasic boss = collision.gameObject.GetComponent<BossBasic>();
-            if (boss != null)
-            {
-                boss.takeDamage(damage);
+                enemy.takeDamage(damage);
             }
             Destroy(gameObject);
         }  
+        else if(collision.gameObject.tag == "projectiles"){
+            Destroy(gameObject);
+        }
     }
 }
