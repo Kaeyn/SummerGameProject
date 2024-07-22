@@ -100,7 +100,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 8400659213421331349, guid: 2604b1e7ff809094697e558834cde0bd, type: 3}
   spawnRate: 0.3
   coneAngle: 45
-  duration: 8
+  duration: 5
   projectileSpeed: 10
   projectilesPerWave: 4
   scaleUpDuration: 2
@@ -204,7 +204,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 8400659213421331349, guid: 2604b1e7ff809094697e558834cde0bd, type: 3}
   spawnRate: 0.3
   coneAngle: 45
-  duration: 8
+  duration: 5
   projectileSpeed: 10
   projectilesPerWave: 4
   scaleUpDuration: 2
