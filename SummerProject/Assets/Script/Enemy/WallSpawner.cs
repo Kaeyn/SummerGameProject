@@ -1,21 +1,19 @@
-using System;
+
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class WallSpawner : MonoBehaviour
 {
     [SerializeField] float timer;
     [SerializeField] float spawnRate;
     float counter = 0;
-    [SerializeField]  GameObject thingToSpanwn;
+    [SerializeField] GameObject thingToSpawn;
 
-    [SerializeField] float  randomRangeX;
-    [SerializeField] float  randomRangeY;
+    [SerializeField] float randomRangeX;
+    [SerializeField] float randomRangeY;
 
     LogicGameHandler logicGameHandler;
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -28,13 +26,13 @@ public class Spawner : MonoBehaviour
         if (!logicGameHandler.isBossSpawn)
         {
             timer -= Time.deltaTime;
-            if(timer <= 0){
+            if (timer <= 0)
+            {
                 counter += Time.deltaTime;
                 float randomX = UnityEngine.Random.Range(-randomRangeX, randomRangeX);
-                float randomY = UnityEngine.Random.Range(-randomRangeY, randomRangeY);
                 if (counter > spawnRate)
                 {
-                    Instantiate(thingToSpanwn, new Vector3(transform.position.x + randomX, transform.position.y + randomY, transform.position.z), Quaternion.identity);
+                    Instantiate(thingToSpawn, new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z), Quaternion.identity);
                     counter = 0;
                 }
             }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4662001765725360665}
   m_Layer: 0
   m_Name: healingPotion
-  m_TagString: Untagged
+  m_TagString: projectiles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,5 +137,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  timer: 0
   isTargeted: 0

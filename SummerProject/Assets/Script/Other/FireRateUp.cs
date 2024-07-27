@@ -35,7 +35,7 @@ public class FireRateUp : PowerUp
         {
             // Increase player's fire rate
             PlayerShooting playerShooting = player.GetComponent<PlayerShooting>();
-            playerShooting.IncreaseFireRate(0.02f); // Call the method to increase fire rate
+            playerShooting.IncreaseFireRate(0.05f); // Call the method to increase fire rate
             Destroy(gameObject);
         }
     }
