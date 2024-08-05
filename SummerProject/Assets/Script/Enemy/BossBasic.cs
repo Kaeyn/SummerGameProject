@@ -135,6 +135,7 @@ public class BossBasic : Enemy
                 {
                     rigidbody2D.AddForce(new Vector2(-2, 6), ForceMode2D.Impulse);
                     wasDead = true;
+                    logicGameHandler.isBossSpawn = false;
                     SetRunning(true);
                     rigidbody2D.gravityScale = 1;
                     Destroy(gameObject, 5f);

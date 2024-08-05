@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3573cfdeb89a344bd53556f89fb36d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 5
+  timer: 20
   spawnRate: 5
   thingToSpanwn: {fileID: 7821898304608787954, guid: f851564b5688a474884c71d387fdedb6, type: 3}
   randomRangeX: 1
@@ -363,11 +363,13 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -10.406094, y: 4.6344295}
-  - {x: -10.340008, y: -5.308348}
-  - {x: 11.036171, y: -5.2600307}
-  - {x: 11.036787, y: 4.706483}
-  - {x: -10.304014, y: 4.7213254}
+  - {x: -8.477383, y: 4.7100644}
+  - {x: -8.574467, y: 1.4529443}
+  - {x: -8.562567, y: -5.3839836}
+  - {x: 9.372185, y: -5.3734846}
+  - {x: 9.334983, y: 4.706483}
+  - {x: 6.282598, y: 4.7467537}
+  - {x: -8.677845, y: 4.7213254}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -707,8 +709,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3573cfdeb89a344bd53556f89fb36d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 1
-  spawnRate: 4
+  timer: 4
+  spawnRate: 10
   thingToSpanwn: {fileID: 1067026459249195839, guid: 2eaee0b780e90064d9913e09b9dc4c62, type: 3}
   randomRangeX: 0
   randomRangeY: 4
@@ -1422,7 +1424,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1110875357}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 8.97, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1442,7 +1444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76f92eb5c7ec06749992058d3b6e048f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 2
+  timer: 15
   spawnRate: 5
   thingToSpawn: {fileID: 7240308246292898220, guid: def456ce95b91664dbd4fe4e8f1f07ae, type: 3}
   randomRangeX: 0
@@ -1568,7 +1570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 10
-  spawnRate: 1
+  spawnRate: 4
   thingToSpanwn: {fileID: 4264015445410433302, guid: 3546e89d60084054cb893580d8a980ae, type: 3}
   randomRangeX: 2
   randomRangeY: 0
@@ -1917,7 +1919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3573cfdeb89a344bd53556f89fb36d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 1
+  timer: 5
   spawnRate: 1
   thingToSpanwn: {fileID: 4264015445410433302, guid: 75a46c4bda8c8254ab8c856edd2cb63c, type: 3}
   randomRangeX: 0
@@ -2221,8 +2223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3573cfdeb89a344bd53556f89fb36d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 0
-  spawnRate: 4
+  timer: 10
+  spawnRate: 10
   thingToSpanwn: {fileID: 5668425351707319586, guid: 5313b850abb839546829cf069e6d9c0b, type: 3}
   randomRangeX: 3
   randomRangeY: 0
@@ -2234,7 +2236,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1949321013}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4, y: 6, z: 0}
+  m_LocalPosition: {x: -4, y: 4.41, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2270,7 +2272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 480e10049c02fbc4cb98cc25553d4d92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 5
+  timer: 15
   breakablePrefab: {fileID: 1241932837445952011, guid: ff7ae27099ad79d44a045c98c32678ba, type: 3}
   prefab: {fileID: 3252350965966655456, guid: 948cee30e0dc82e4ca01a2b93be9a84c, type: 3}
 --- !u!4 &1995176348
