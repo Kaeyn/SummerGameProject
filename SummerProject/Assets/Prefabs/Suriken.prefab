@@ -150,4 +150,4 @@ MonoBehaviour:
   health: 0
   timer: 10
   rotateSpeed: 1200
-  moveSpeed: 6
+  moveSpeed: 3
