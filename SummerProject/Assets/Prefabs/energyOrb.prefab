@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3870647564935265303}
   m_Layer: 0
   m_Name: energyOrb
-  m_TagString: Untagged
+  m_TagString: projectiles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -9,21 +9,26 @@ public class BreakablePipeSpawner : MonoBehaviour
     [SerializeField] GameObject breakablePrefab;
     [SerializeField] GameObject prefab;
     List<GameObject> listPrefabs = new List<GameObject>();
+    LogicGameHandler logicGameHandler;
     // Start is called before the first frame update
     void Start()
     {
+        logicGameHandler = GameObject.Find("GameLogicHandler").GetComponent<LogicGameHandler>();
         countdown = timer;
     }
 
     // Update is called once per frame
     void Update()
     {
-        countdown -= Time.deltaTime;
-        if (countdown <= 0)
+        if (!logicGameHandler.isBossSpawn)
         {
-            countdown = timer;
-            getSpawnObject();
-            Spawn();
+            countdown -= Time.deltaTime;
+            if (countdown <= 0)
+            {
+                countdown = timer;
+                getSpawnObject();
+                Spawn();
+            }
         }
     }
 

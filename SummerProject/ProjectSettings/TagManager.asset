@@ -8,6 +8,8 @@ TagManager:
   - bullet
   - blockable
   - projectiles
+  - wall
+  - slider
   layers:
   - Default
   - TransparentFX

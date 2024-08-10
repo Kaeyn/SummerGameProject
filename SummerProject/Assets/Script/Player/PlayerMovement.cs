@@ -84,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
      }
     void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.transform.CompareTag("enemy")){
+        if(other.transform.CompareTag("enemy") || other.transform.CompareTag("wall")){
             logicGameHandler.gameover();
         }
     }

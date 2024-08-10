@@ -1,20 +1,22 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LogicGameHandler : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] List<GameObject> spawners;
-    [SerializeField] TMP_Text mainText, score, btnText, countdown;
-    [SerializeField] Button button;
+    [SerializeField] TMP_Text mainText, score, countdown;
+    [SerializeField] Button  restartButton, quitButton;
     [SerializeField] Slider slider;
     float countdownTimer = 3;
-    
+
     string gameName = "Rapit Dance";
 
     int point = 0;
@@ -26,90 +28,129 @@ public class LogicGameHandler : MonoBehaviour
     [SerializeField] float interval;
     float cdInterval;
 
-    void Start(){
+    void Start()
+    {
         player.SetActive(false);
         foreach (var spawner in spawners)
         {
             spawner.SetActive(false);
         }
-        mainText.gameObject.SetActive(true);
+        mainText.gameObject.SetActive(false);
         slider.gameObject.SetActive(false);
         score.gameObject.SetActive(false);
-        button.gameObject.SetActive(true);
+        restartButton.gameObject.SetActive(false);
+        quitButton.gameObject.SetActive(false);
         countdown.gameObject.SetActive(false);
-        mainText.text = gameName;
-        btnText.text = "Start";
         score.text = point.ToString();
         cdInterval = interval;
+        play();
     }
-    private void Update() {
+    private void Update()
+    {
         score.text = point.ToString();
-        if(isCountingDown && countdownTimer >= 0){
+        if (isCountingDown && countdownTimer >= 0)
+        {
             countdown.text = Math.Round(countdownTimer).ToString();
             countdownTimer -= Time.deltaTime;
         }
-        if(countdownTimer < 0 && !isStarted && !isGameOver){
+        if (countdownTimer < 0 && !isStarted && !isGameOver)
+        {
             startGame();
             isStarted = true;
         }
-        if(isStarted){
+        if (isStarted)
+        {
             cdInterval -= Time.deltaTime;
-            if(cdInterval <= 0){
+            if (cdInterval <= 0)
+            {
                 gainPoint(1);
                 cdInterval = interval;
             }
         }
     }
-    public void play(){
+    public void play()
+    {
+        Debug.Log("play");
         isCountingDown = true;
         player.SetActive(false);
         foreach (var spawner in spawners)
         {
             spawner.SetActive(false);
         }
-        mainText.gameObject.SetActive(false);
         score.gameObject.SetActive(false);
-        button.gameObject.SetActive(false);
         countdown.gameObject.SetActive(true);
     }
-    public void startGame(){
+    public void startGame()
+    {
         isCountingDown = false;
         player.SetActive(true);
         foreach (var spawner in spawners)
         {
-            spawner.SetActive(true);
+            if (spawner)
+            {
+                spawner.SetActive(true);
+            } else {
+                
+            }
         }
-        mainText.gameObject.SetActive(false);
         score.gameObject.SetActive(true);
         slider.gameObject.SetActive(true);
-        button.gameObject.SetActive(false);
         countdown.gameObject.SetActive(false);
     }
-    public void gainPoint(int pointGained){
+    public void gainPoint(int pointGained)
+    {
         point += pointGained;
     }
-    public void gameover(){
+    public void gameover()
+    {
         isGameOver = true;
         isStarted = false;
         player.SetActive(true);
         foreach (var spawner in spawners)
         {
-            spawner.SetActive(true);
+            if (spawner)
+            {
+                spawner.SetActive(false);
+            } else {
+
+            }
         }
         mainText.gameObject.SetActive(true);
         mainText.text = "Game Over";
-        btnText.text = "Restart";
         score.gameObject.SetActive(true);
-        button.gameObject.SetActive(true);
+        restartButton.gameObject.SetActive(true);
+        quitButton.gameObject.SetActive(true);
         countdown.gameObject.SetActive(false);
         Time.timeScale = 0;
     }
-    public void restart(){
+    public void restartGame()
+    {   
+        mainText.gameObject.SetActive(false);
+        score.gameObject.SetActive(false);
+        countdown.gameObject.SetActive(false);
+        restartButton.gameObject.SetActive(false);
+        quitButton.gameObject.SetActive(false);
+        isGameOver = false;
+        isStarted = false;
+        Time.timeScale = 1;
         countdownTimer = 3;
-        // player.SetActive(true);
-        // spawner.SetActive(true);
-        // canvas.SetActive(false);
+        countdown.text = "3";
+        point = 0;
+        SceneManager.LoadScene("MainScene");
+        // clearEnemy();
+        // play();
     }
+
+    public void quitGame()
+    {   
+        SceneManager.LoadScene("StartScene");
+        isGameOver = false;
+        isStarted = false;
+        Time.timeScale = 1;
+        countdownTimer = 3;
+        countdown.text = "3";
+    }
+
     // public void setActiveSpawner(){
     //     spawner.SetActive(true);
     // }
