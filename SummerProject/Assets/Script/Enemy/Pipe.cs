@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Pipe : Enemy
 {
+    LogicGameHandler logicGameHandler;
     protected override void Start()
     {
         base.Start();
+        logicGameHandler = GameObject.Find("GameLogicHandler").GetComponent<LogicGameHandler>();
         CreatePipe();
     }
 
@@ -22,13 +25,16 @@ public class Pipe : Enemy
 
     void FixedUpdate()
     {
-        if (!logicGameHandler.isGameOver)
+        if (!logicGameHandler.isBossSpawn)
         {
-            rigidbody2D.velocity = new Vector2(Vector2.left.normalized.x * speed, rigidbody2D.velocity.y);
-        }
-        else
-        {
-            rigidbody2D.velocity = new Vector2(0, 0);
+            if (!logicGameHandler.isGameOver)
+            {
+                rigidbody2D.velocity = new Vector2(Vector2.left.normalized.x * speed, rigidbody2D.velocity.y);
+            }
+            else
+            {
+                rigidbody2D.velocity = new Vector2(0, 0);
+            }
         }
     }
 
