@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  health: 100
+  health: 50
   timer: 5
   bossPhase: 0
   amplitude: 2.5

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2148094284125415005}
   m_Layer: 0
   m_Name: CapyProjectile
-  m_TagString: enemy
+  m_TagString: projectiles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -3,20 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public enum SoundType{
-    ROCKET,
+    ROCKET_MOVING,
     EXPLOSION,
-    CHAINSAW,
-    CHAIN,
-    WALL,
+    SHIELDED,
+    SHIELD_DEPLET,
     PLAYER_SHOOTING,
-    PLAYER_HURT,
-    PLAYER_MOVE,
-    CAPY_SHOOTING,
-    BOSS_LASER,
     COIN
 
 }
-// [ExecuteInEditMode]
+[ExecuteInEditMode]
 public class AudioManager : MonoBehaviour
 {
     private static AudioManager instance;
@@ -31,8 +26,8 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         if(backgroundMusic != null){
-            musicSource.clip = backgroundMusic;
-            musicSource.Play();
+            // musicSource.clip = backgroundMusic;
+            // musicSource.Play();
         }
     }
 

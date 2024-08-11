@@ -17,7 +17,7 @@ public class LogicGameHandler : MonoBehaviour
     [SerializeField] Slider slider;
     float countdownTimer = 3;
 
-    string gameName = "Rapit Dance";
+    string gameName = "Space Invader";
 
     int point = 0;
     // Start is called before the first frame update
@@ -27,7 +27,6 @@ public class LogicGameHandler : MonoBehaviour
     public bool isBossSpawn = false;
     [SerializeField] float interval;
     float cdInterval;
-
     void Start()
     {
         player.SetActive(false);
