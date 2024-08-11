@@ -20,6 +20,10 @@ public class PlayerMovement : MonoBehaviour
     private float sprintTimer;
     LogicGameHandler logicGameHandler;
     PlayerStat playerStat;
+    Animator animator;
+    float horizontalInput = 0f;
+    float verticalInput = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,14 +33,15 @@ public class PlayerMovement : MonoBehaviour
         logicGameHandler = GameObject.Find("GameLogicHandler").GetComponent<LogicGameHandler>();
         playerStat = GetComponent<PlayerStat>();
         baseSpeed = speed;
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
         PlayerInputHandler();
-
         if (!logicGameHandler.isGameOver)
         {
+            animator.SetFloat("velocityY",verticalInput);
             if (isSprinting)
             {
                 playerStat.stamina -= sprintStaminaCost * Time.deltaTime;
@@ -69,9 +74,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
-     {
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-        float verticalInput = Input.GetAxisRaw("Vertical");
+    {
         Vector2 move = new Vector2(horizontalInput,verticalInput).normalized;
         if(!logicGameHandler.isGameOver){
             rigidbody2D.velocity = new Vector2(move.x * speed,move.y* speed );
@@ -79,26 +82,13 @@ public class PlayerMovement : MonoBehaviour
         else{
             rigidbody2D.velocity = Vector2.zero;
         }
-
-        
-     }
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if(other.transform.CompareTag("enemy") || other.transform.CompareTag("wall")){
-            logicGameHandler.gameover();
-        }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.transform.CompareTag("enemy") || collision.gameObject.tag == "projectiles")
-        {
-            logicGameHandler.gameover();
-        }
-    }
+    
 
     void PlayerInputHandler()
     {
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
         if (!isSprintCooldown && Input.GetKeyDown(KeyCode.LeftShift))
         {
             this.StartSprint();
