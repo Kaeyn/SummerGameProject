@@ -67,6 +67,7 @@ public class LogicGameHandler : MonoBehaviour
                 cdInterval = interval;
             }
         }
+        
     }
     public void play()
     {

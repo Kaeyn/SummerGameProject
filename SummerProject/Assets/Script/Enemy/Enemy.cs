@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float health;
     
     protected LogicGameHandler logicGameHandler;
+    Collider2D boundary;
     
     protected Rigidbody2D rigidbody2D;
     [SerializeField] public float timer;
@@ -20,6 +21,8 @@ public class Enemy : MonoBehaviour
     {
         rigidbody2D = transform.GetComponent<Rigidbody2D>();
         logicGameHandler = GameObject.Find("GameLogicHandler").GetComponent<LogicGameHandler>();
+        boundary = GameObject.Find("Wall").GetComponent<Collider2D>();
+        Physics2D.IgnoreCollision(boundary, GetComponent<Collider2D>());
     }
 
     // Update is called once per frame
@@ -27,6 +30,9 @@ public class Enemy : MonoBehaviour
     {
         counter += Time.deltaTime;
         if(counter > timer){
+            Destroy(gameObject);
+        }
+        if(logicGameHandler.isBossSpawn){
             Destroy(gameObject);
         }
     }

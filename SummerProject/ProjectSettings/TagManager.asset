@@ -8,8 +8,10 @@ TagManager:
   - bullet
   - blockable
   - projectiles
-  - wall
   - slider
+  - wall
+  - reward
+  - Audio
   layers:
   - Default
   - TransparentFX

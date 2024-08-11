@@ -44,10 +44,13 @@ public class Wall : MonoBehaviour
 
     private bool movingUp = true; // Để theo dõi hướng di chuyển
     private Camera mainCamera;
+    protected LogicGameHandler logicGameHandler;
 
     void Start()
     {
         mainCamera = Camera.main; // Lấy Camera chính
+        
+        logicGameHandler = GameObject.Find("GameLogicHandler").GetComponent<LogicGameHandler>();
     }
 
     void Update()
@@ -76,6 +79,9 @@ public class Wall : MonoBehaviour
         else
         {
             transform.position += Vector3.down * verticalSpeed * Time.deltaTime;
+        }
+        if(logicGameHandler.isBossSpawn){
+            Destroy(gameObject);
         }
     }
 
