@@ -24,7 +24,7 @@ public class Coin : Enemy
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("Player")){
-            AudioManager.PlaySFX(SoundType.COIN);
+            AudioManager.PlaySFX(SoundType.COIN, 0.2f);
             logicGameHandler.gainPoint(coin);
             Destroy(gameObject);
         }
