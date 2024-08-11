@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 
-public class Rabbit : Enemy
+public class Coin : Enemy
 {
-    
+    [SerializeField] int coin;
     
     // Start is called before the first frame update
     protected override void Start()
     {
-      base.Start();  
+        base.Start();  
     }
 
     // Update is called once per frame
@@ -22,11 +22,10 @@ public class Rabbit : Enemy
             rigidbody2D.velocity = new Vector2(0,0);
         }
     }
-    protected override void Update()
-    {
-        base.Update();
-        if(health <= 0){
-            logicGameHandler.gainPoint(10);
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.CompareTag("Player")){
+            AudioManager.PlaySFX(SoundType.COIN);
+            logicGameHandler.gainPoint(coin);
             Destroy(gameObject);
         }
     }

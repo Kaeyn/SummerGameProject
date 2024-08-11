@@ -31,7 +31,6 @@ public class Bullet : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Rabbit rabbit = other.gameObject.GetComponent<Rabbit>();
         Enemy enemy = other.gameObject.GetComponent<Enemy>();
         CapyScript capy = other.gameObject.GetComponent<CapyScript>();
         BossBasic boss = other.gameObject.GetComponent<BossBasic>();
