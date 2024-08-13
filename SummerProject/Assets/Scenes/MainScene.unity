@@ -1919,7 +1919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3573cfdeb89a344bd53556f89fb36d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 0
+  timer: 60
   spawnRate: 1
   thingToSpanwn: {fileID: 2708748297632822634, guid: bb84ac7831c29f64c8fa5c98185fa63f, type: 3}
   randomRangeX: 0
