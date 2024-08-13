@@ -2,13 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 public enum SoundType{
     ROCKET_MOVING,
     EXPLOSION,
     SHIELDED,
     SHIELD_DEPLET,
     PLAYER_SHOOTING,
-    COIN
+    COIN,
+    BOSS_HURT,
+    BOSS_SCREAM,
+    VICTORY,
+    GAMEOVER
 
 }
 [ExecuteInEditMode]
@@ -17,23 +22,35 @@ public class AudioManager : MonoBehaviour
     private static AudioManager instance;
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
-    [SerializeField] AudioClip backgroundMusic;
+    [SerializeField] Slider musicSlider;
+    [SerializeField] Slider SFXSlider;
     [SerializeField] SoundList[] soundList;
-    // [SerializeField] AudioClip SFXSourceAudio;
     private void Awake() {
         instance = this;
     }
     void Start()
     {
-        if(backgroundMusic != null){
-            // musicSource.clip = backgroundMusic;
-            // musicSource.Play();
+        if(PlayerPrefs.HasKey("musicVol")){
+            loadVol();
+        }else{
+            setMusicVolume();
+            setSFXVolume();
         }
+        
     }
 
     void Update()
     {
         
+    }
+    public static void muteMusic(bool mute){
+        instance.musicSource.mute = mute;
+    }
+    void loadVol(){
+        musicSlider.value = PlayerPrefs.GetFloat("musicVol", 0);
+        SFXSlider.value = PlayerPrefs.GetFloat("sfxVol", 0);
+        setMusicVolume();
+        setSFXVolume();
     }
     public static void PlaySFX(SoundType sound, float volume = 1){
         AudioClip[] audioClips = instance.soundList[(int)sound].Sounds;
@@ -50,6 +67,14 @@ public class AudioManager : MonoBehaviour
         }
     }
     #endif
+    public void setMusicVolume(){
+        instance.musicSource.volume = musicSlider.value;
+        PlayerPrefs.SetFloat("musicVol",musicSlider.value);
+    }
+    public void setSFXVolume(){
+        instance.SFXSource.volume = SFXSlider.value;
+        PlayerPrefs.SetFloat("sfxVol",SFXSlider.value);
+    }
 }
 [Serializable]
 public struct SoundList

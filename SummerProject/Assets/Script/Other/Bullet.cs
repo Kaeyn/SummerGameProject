@@ -32,13 +32,22 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         Enemy enemy = other.gameObject.GetComponent<Enemy>();
-        CapyScript capy = other.gameObject.GetComponent<CapyScript>();
-        BossBasic boss = other.gameObject.GetComponent<BossBasic>();
+        
         if (other.gameObject.tag == "enemy")
         {
             if (enemy != null)
             {
-                enemy.takeDamage(damage);
+                try
+                {
+                    BossBasic boss = enemy as BossBasic;
+                    boss.takeDamage(damage);
+                }
+                catch (System.Exception)
+                {
+                    enemy.takeDamage(damage);
+                    throw;
+                }
+                
             }
             Destroy(gameObject);
         }

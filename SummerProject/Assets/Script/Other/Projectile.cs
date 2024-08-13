@@ -12,9 +12,6 @@ using UnityEngine;
 
         void Update()
         {
-            if(logicGameHandler.isBossSpawn){
-                Destroy(gameObject);
-            }
             transform.position += direction * speed * Time.deltaTime;
         }
 

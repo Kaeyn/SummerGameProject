@@ -20,8 +20,8 @@ public class PlayerShooting : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= fireRate && (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0)))
         {
-            GameObject newGame = Instantiate(bullet, new Vector3(transform.position.x + offsetX, transform.position.y, transform.position.z), Quaternion.Euler(Vector2.right));
-            AudioManager.PlaySFX(SoundType.PLAYER_SHOOTING,0.5f);
+            Instantiate(bullet, new Vector3(transform.position.x + offsetX, transform.position.y, transform.position.z), Quaternion.Euler(Vector2.right));
+            AudioManager.PlaySFX(SoundType.PLAYER_SHOOTING,0.25f);
             timer = 0;
         }
     }

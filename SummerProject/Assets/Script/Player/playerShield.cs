@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class playerShield : MonoBehaviour
@@ -8,12 +10,14 @@ public class playerShield : MonoBehaviour
     LogicGameHandler logicGameHandler;
     bool shielded = true;
     [SerializeField] float shieldCountdown;
-    float counter = 0f;
+    float counter;
     // Start is called before the first frame update
     [SerializeField] Animator animator;
+    [SerializeField] TMP_Text shieldCountdownText;
     void Start()
     {
         logicGameHandler = GameObject.Find("GameLogicHandler").GetComponent<LogicGameHandler>();
+        counter = shieldCountdown;
     }
 
     // Update is called once per frame
@@ -21,13 +25,16 @@ public class playerShield : MonoBehaviour
     {
         animator.SetBool("shielded", shielded);
         if(!shielded){
-            if(counter >= shieldCountdown){
+            shieldCountdownText.text = Math.Round(Convert.ToDouble(counter)).ToString()+"s";
+            if(counter <= 0){
                 shielded = true;
                 AudioManager.PlaySFX(SoundType.SHIELDED,0.5f);
-                counter = 0f;
+                counter = shieldCountdown;
             }else{
-                counter += Time.deltaTime;
+                counter -= Time.deltaTime;
             }
+        }else{
+            shieldCountdownText.text = "";
         }
     }
     void OnCollisionEnter2D(Collision2D other)
@@ -45,6 +52,9 @@ public class playerShield : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.gameObject.name.Equals("Boss")){
+            
+        }
         if (collision.transform.CompareTag("enemy") || collision.gameObject.tag == "projectiles")
         {
             if(shielded){

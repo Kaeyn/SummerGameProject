@@ -12,6 +12,8 @@ TagManager:
   - wall
   - reward
   - Audio
+  - boss
+  - bossHealthText
   layers:
   - Default
   - TransparentFX
