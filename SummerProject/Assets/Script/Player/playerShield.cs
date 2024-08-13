@@ -28,7 +28,7 @@ public class playerShield : MonoBehaviour
             shieldCountdownText.text = Math.Round(Convert.ToDouble(counter)).ToString()+"s";
             if(counter <= 0){
                 shielded = true;
-                AudioManager.PlaySFX(SoundType.SHIELDED,0.5f);
+                AudioManager.PlaySFX(SoundType.SHIELDED,1f);
                 counter = shieldCountdown;
             }else{
                 counter -= Time.deltaTime;
@@ -42,7 +42,7 @@ public class playerShield : MonoBehaviour
         if(other.transform.CompareTag("enemy") || other.transform.CompareTag("wall")){
             if(shielded){
                 Destroy(other.gameObject);
-                AudioManager.PlaySFX(SoundType.SHIELD_DEPLET,0.5f);
+                AudioManager.PlaySFX(SoundType.SHIELD_DEPLET,1f);
                 shielded = false;
             }else{
                 logicGameHandler.gameover();
@@ -53,13 +53,13 @@ public class playerShield : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.name.Equals("Boss")){
-            
+            logicGameHandler.gameover();
         }
         if (collision.transform.CompareTag("enemy") || collision.gameObject.tag == "projectiles")
         {
             if(shielded){
                 Destroy(collision.gameObject);
-                AudioManager.PlaySFX(SoundType.SHIELD_DEPLET,0.5f);
+                AudioManager.PlaySFX(SoundType.SHIELD_DEPLET,1f);
                 shielded = false;
             }else{
                 logicGameHandler.gameover();

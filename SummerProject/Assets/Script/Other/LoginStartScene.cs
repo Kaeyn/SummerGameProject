@@ -9,7 +9,6 @@ public class LoginStartScene : MonoBehaviour
 {
     [SerializeField] TMP_Text mainText;
     [SerializeField] Button button;
-    [SerializeField] Slider volumeSlider;
     string gameName = "Space Invaders";
 
     // Start is called before the first frame update
@@ -28,7 +27,9 @@ public class LoginStartScene : MonoBehaviour
 
     public void play()
     {
-        Debug.Log("Button clicked"); // Sử dụng dấu ngoặc kép thay vì ngoặc đơn
         SceneManager.LoadScene("MainScene");
+    }
+    public void quit(){
+        Application.Quit();
     }
 }

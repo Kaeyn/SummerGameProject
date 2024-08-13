@@ -43,10 +43,10 @@ public class Fly : Enemy
         if(isDead){Destroy(gameObject);}
     }
     void idleSFX(){
-        AudioManager.PlaySFX(SoundType.ROCKET_MOVING,0.03f);
+        AudioManager.PlaySFX(SoundType.ROCKET_MOVING,0.05f);
     }
     void exploseSFX(){
         logicGameHandler.gainPoint(15);
-        AudioManager.PlaySFX(SoundType.EXPLOSION,0.03f);
+        AudioManager.PlaySFX(SoundType.EXPLOSION,0.8f);
     }
 }

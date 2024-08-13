@@ -13,20 +13,19 @@ public class LogicGameHandler : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] List<GameObject> spawners;
     [SerializeField] TMP_Text mainText, score, countdown;
-    [SerializeField] Button  restartButton, quitButton;
-    [SerializeField] Slider staminaSlider;
-    [SerializeField] GameObject shieldIcon;
+    [SerializeField] Button  restartButton, returnButton, quitButton;
+    [SerializeField] Slider staminaSlider, musicSlider, sfxSlider;
+    [SerializeField] GameObject shieldIcon, overlay;
     float countdownTimer = 3;
-
-
     int point = 0;
-    // Start is called before the first frame update
     bool isCountingDown = false;
     bool isStarted = false;
     public bool isGameOver = false;
     public bool isBossSpawn = false;
+    public bool isPause = false;
     [SerializeField] float interval;
     float cdInterval;
+
     void Start()
     {
         player.SetActive(false);
@@ -36,17 +35,25 @@ public class LogicGameHandler : MonoBehaviour
         }
         mainText.gameObject.SetActive(false);
         staminaSlider.gameObject.SetActive(false);
+        musicSlider.gameObject.SetActive(false);
+        sfxSlider.gameObject.SetActive(false);
         shieldIcon.SetActive(false);
         score.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(false);
+        returnButton.gameObject.SetActive(false);
         quitButton.gameObject.SetActive(false);
         countdown.gameObject.SetActive(false);
+        overlay.SetActive(false);
         score.text = point.ToString();
         cdInterval = interval;
         play();
     }
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Escape) && !isGameOver){
+            pause();
+            return;
+        }
         score.text = point.ToString();
         if (isCountingDown && countdownTimer >= 0)
         {
@@ -68,6 +75,51 @@ public class LogicGameHandler : MonoBehaviour
             }
         }
         
+    }
+    void pause(){
+        if(isPause){
+            foreach (var spawner in spawners)
+            {
+                if (spawner)
+                {
+                    spawner.SetActive(true);
+                } else {
+
+                }
+            }
+            overlay.SetActive(false);
+            musicSlider.gameObject.SetActive(false);
+            sfxSlider.gameObject.SetActive(false);
+            score.gameObject.SetActive(false);
+            mainText.gameObject.SetActive(false);
+            mainText.text = "Pause";
+            restartButton.gameObject.SetActive(false);
+            returnButton.gameObject.SetActive(false);
+            quitButton.gameObject.SetActive(false);
+            Time.timeScale = 1;
+        }else{
+            foreach (var spawner in spawners)
+            {
+                if (spawner)
+                {
+                    spawner.SetActive(false);
+                } else {
+
+                }
+            }
+            overlay.SetActive(true);
+            score.gameObject.SetActive(true);
+            mainText.gameObject.SetActive(true);
+            
+            musicSlider.gameObject.SetActive(true);
+            sfxSlider.gameObject.SetActive(true);
+            mainText.text = "Pause";
+            restartButton.gameObject.SetActive(true);
+            returnButton.gameObject.SetActive(true);
+            quitButton.gameObject.SetActive(true);
+            Time.timeScale = 0;
+        }
+        isPause = !isPause;
     }
     public void play()
     {
@@ -120,21 +172,25 @@ public class LogicGameHandler : MonoBehaviour
 
             }
         }
-        mainText.gameObject.SetActive(true);
-        mainText.text = "Game Over";
+        overlay.SetActive(true);
         score.gameObject.SetActive(true);
+        mainText.gameObject.SetActive(true);
+        
+        mainText.text = "Game Over";
         restartButton.gameObject.SetActive(true);
+        returnButton.gameObject.SetActive(true);
         quitButton.gameObject.SetActive(true);
         countdown.gameObject.SetActive(false);
         Time.timeScale = 0;
     }
     public void restartGame()
     {   
-        // AudioManager.muteMusic(false);
-        mainText.gameObject.SetActive(false);
+        overlay.SetActive(false);
         score.gameObject.SetActive(false);
         countdown.gameObject.SetActive(false);
+        mainText.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(false);
+        returnButton.gameObject.SetActive(false);
         quitButton.gameObject.SetActive(false);
         isGameOver = false;
         isStarted = false;
@@ -143,11 +199,9 @@ public class LogicGameHandler : MonoBehaviour
         countdown.text = "3";
         point = 0;
         SceneManager.LoadScene("MainScene");
-        // clearEnemy();
-        // play();
     }
 
-    public void quitGame()
+    public void returnToStart()
     {   
         SceneManager.LoadScene("StartScene");
         isGameOver = false;
@@ -155,6 +209,10 @@ public class LogicGameHandler : MonoBehaviour
         Time.timeScale = 1;
         countdownTimer = 3;
         countdown.text = "3";
+    }
+    public void quit()
+    {   
+        Application.Quit();
     }
 
 
