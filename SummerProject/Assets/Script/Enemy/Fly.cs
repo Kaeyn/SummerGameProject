@@ -47,6 +47,6 @@ public class Fly : Enemy
     }
     void exploseSFX(){
         logicGameHandler.gainPoint(15);
-        AudioManager.PlaySFX(SoundType.EXPLOSION,0.8f);
+        AudioManager.PlaySFX(SoundType.EXPLOSION,0.5f);
     }
 }
