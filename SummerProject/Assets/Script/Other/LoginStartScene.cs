@@ -9,8 +9,8 @@ public class LoginStartScene : MonoBehaviour
 {
     [SerializeField] TMP_Text mainText;
     [SerializeField] Button button;
-
-    string gameName = "Rapit Dance";
+    [SerializeField] Slider volumeSlider;
+    string gameName = "Space Invaders";
 
     // Start is called before the first frame update
     void Start()

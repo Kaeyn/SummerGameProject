@@ -14,10 +14,10 @@ public class LogicGameHandler : MonoBehaviour
     [SerializeField] List<GameObject> spawners;
     [SerializeField] TMP_Text mainText, score, countdown;
     [SerializeField] Button  restartButton, quitButton;
-    [SerializeField] Slider slider;
+    [SerializeField] Slider staminaSlider;
+    [SerializeField] GameObject shieldIcon;
     float countdownTimer = 3;
 
-    string gameName = "Space Invader";
 
     int point = 0;
     // Start is called before the first frame update
@@ -35,7 +35,8 @@ public class LogicGameHandler : MonoBehaviour
             spawner.SetActive(false);
         }
         mainText.gameObject.SetActive(false);
-        slider.gameObject.SetActive(false);
+        staminaSlider.gameObject.SetActive(false);
+        shieldIcon.SetActive(false);
         score.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(false);
         quitButton.gameObject.SetActive(false);
@@ -82,6 +83,7 @@ public class LogicGameHandler : MonoBehaviour
     }
     public void startGame()
     {
+        AudioManager.muteMusic(false);
         isCountingDown = false;
         player.SetActive(true);
         foreach (var spawner in spawners)
@@ -94,7 +96,8 @@ public class LogicGameHandler : MonoBehaviour
             }
         }
         score.gameObject.SetActive(true);
-        slider.gameObject.SetActive(true);
+        staminaSlider.gameObject.SetActive(true);
+        shieldIcon.SetActive(true);
         countdown.gameObject.SetActive(false);
     }
     public void gainPoint(int pointGained)
@@ -103,6 +106,8 @@ public class LogicGameHandler : MonoBehaviour
     }
     public void gameover()
     {
+        AudioManager.muteMusic(true);
+        AudioManager.PlaySFX(SoundType.GAMEOVER,1f);
         isGameOver = true;
         isStarted = false;
         player.SetActive(true);
@@ -125,6 +130,7 @@ public class LogicGameHandler : MonoBehaviour
     }
     public void restartGame()
     {   
+        // AudioManager.muteMusic(false);
         mainText.gameObject.SetActive(false);
         score.gameObject.SetActive(false);
         countdown.gameObject.SetActive(false);
@@ -151,11 +157,5 @@ public class LogicGameHandler : MonoBehaviour
         countdown.text = "3";
     }
 
-    // public void setActiveSpawner(){
-    //     spawner.SetActive(true);
-    // }
-    // public void setActivePlayer(){
-    //     canvas.SetActive();
-    // }
 
 }

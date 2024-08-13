@@ -38,6 +38,8 @@ public class Spawner : MonoBehaviour
                     counter = 0;
                 }
             }
+        }else{
+            Destroy(gameObject);
         }
     }
 }

@@ -13,8 +13,10 @@ public class Enemy : MonoBehaviour
     protected Rigidbody2D rigidbody2D;
     [SerializeField] public float timer;
     float counter = 0;
-    public void takeDamage(float damage){
-        health -= damage;
+    public virtual void takeDamage(float damage){
+        if(health > 0){
+            health -= damage;
+        }
     }   
     // Start is called before the first frame update
     protected virtual void Start()
