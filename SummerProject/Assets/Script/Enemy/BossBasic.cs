@@ -151,7 +151,7 @@ public class BossBasic : Enemy
                     SetRunning(true);
                     rigidbody2D.gravityScale = 1;
                     AudioManager.PlaySFX(SoundType.BOSS_SCREAM,0.6f);
-                    bossHealthBar.GetComponent<RectTransform>().anchoredPosition = new Vector3(0,-580,0);
+                    bossHealthBar.GetComponent<RectTransform>().anchoredPosition = new Vector3(0,-1000,0);
                     Destroy(gameObject, 2f);
                 }
                 break;
@@ -160,7 +160,7 @@ public class BossBasic : Enemy
     public override void takeDamage(float damage)
     {
         base.takeDamage(damage);
-        AudioManager.PlaySFX(SoundType.BOSS_HURT,1f);
+        AudioManager.PlaySFX(SoundType.BOSS_HURT,0.6f);
     }
 }
 [Serializable]
