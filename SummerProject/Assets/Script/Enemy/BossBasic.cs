@@ -153,6 +153,7 @@ public class BossBasic : Enemy
                     AudioManager.PlaySFX(SoundType.BOSS_SCREAM,0.6f);
                     bossHealthBar.GetComponent<RectTransform>().anchoredPosition = new Vector3(0,-1000,0);
                     Destroy(gameObject, 2f);
+                    logicGameHandler.winGame();
                 }
                 break;
         }

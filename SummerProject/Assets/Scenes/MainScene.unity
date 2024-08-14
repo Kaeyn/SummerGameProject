@@ -1508,7 +1508,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 137.96}
+  m_AnchoredPosition: {x: 0, y: 60}
   m_SizeDelta: {x: 1980, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &524240314
@@ -1766,6 +1766,7 @@ MonoBehaviour:
   shieldIcon: {fileID: 1899670514}
   overlay: {fileID: 1580507819}
   isGameOver: 0
+  isGameVictory: 0
   isBossSpawn: 0
   isPause: 0
   interval: 1
@@ -2109,7 +2110,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -70}
+  m_AnchoredPosition: {x: 0, y: -60}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &692455149
@@ -2397,7 +2398,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -207.50963}
-  m_SizeDelta: {x: 400, y: 172.774}
+  m_SizeDelta: {x: 370, y: 152.774}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &871755535
 MonoBehaviour:
@@ -2522,7 +2523,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 09a6abcc840d3384194d124507735124, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.12672213
+  m_Volume: 0.039244667
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3481,8 +3482,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.8, y: -81}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchoredPosition: {x: -0.8, y: -95}
+  m_SizeDelta: {x: 370, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1387556771
 MonoBehaviour:
@@ -4571,7 +4572,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.6950458
+  m_Volume: 0.17088905
   m_Pitch: 1
   Loop: 0
   Mute: 0
