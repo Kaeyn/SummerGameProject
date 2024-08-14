@@ -221,7 +221,7 @@ public class LogicGameHandler : MonoBehaviour
     public void winGame()
     {
         AudioManager.muteMusic(true);
-        AudioManager.PlaySFX(SoundType.GAMEOVER,1f);
+        AudioManager.PlaySFX(SoundType.VICTORY,1f);
         isGameVictory = true;
         isStarted = false;
         player.SetActive(true);
