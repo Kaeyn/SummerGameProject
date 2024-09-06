@@ -1,21 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossBasic : Enemy
 {
     [SerializeField] BossPhase bossPhase;
     float maxHealth;
     [SerializeField] float amplitude, initialY, xSkillOffset;
-    [SerializeField] List<GameObject> firstSkillHolder;
-    [SerializeField] List<GameObject> secondSkillHolder;
+    [SerializeField] List<SkillSet> firstSkillHolder;
+    [SerializeField] List<SkillSet> secondSkillHolder;
     Vector3 skillSpawnPos;
     private GameObject currentSkill;
     private bool wasDead = false;
     private bool isChanneling = false;
-
+    GameObject bossHealthBar;
+    Slider sliderHealthBar;
+    TMP_Text healthText;
     int skillIndex = 0;
     enum BossPhase
     {
@@ -26,22 +31,28 @@ public class BossBasic : Enemy
     protected override void Start()
     {
         base.Start();
+        bossHealthBar = GameObject.FindGameObjectWithTag("boss");
+        healthText = GameObject.FindGameObjectWithTag("bossHealthText").GetComponent<TMP_Text>();
+        bossHealthBar.GetComponent<RectTransform>().anchoredPosition = new Vector3(0,-480,0);
+        sliderHealthBar = bossHealthBar.GetComponentInChildren<Slider>();
+        maxHealth = health;
+        sliderHealthBar.maxValue = maxHealth;
         bossPhase = BossPhase.FirstPhase;
         logicGameHandler.isBossSpawn = true;
-        maxHealth = health;
+        AudioManager.PlaySFX(SoundType.BOSS_SCREAM,1f);
         castSkill();
     }
 
     // Update is called once per frame
     protected override void Update()
     {
-        // SkillTimer();
-        if (health <= 0)
+        sliderHealthBar.value = health;
+        healthText.text = health +"/"+maxHealth;
+        if (health <= 0 && !wasDead)
         {
             MoveToNextPhase();
         }
-        else
-        {
+        if(!wasDead){
             SkillTimer();
         }
         if (!isChanneling)
@@ -55,13 +66,13 @@ public class BossBasic : Enemy
         if (timer <= 0)
         {
             castSkill();
-            timer = 10f;
+            
         }
     }
     void castSkill()
     {
         skillSpawnPos = SkillPos();
-        List<GameObject> listToSpawn = new List<GameObject>();
+        List<SkillSet> listToSpawn = new List<SkillSet>();
         if (bossPhase == BossPhase.FirstPhase)
         {
             listToSpawn = firstSkillHolder;
@@ -82,7 +93,8 @@ public class BossBasic : Enemy
         {
             Destroy(currentSkill);
         }
-        currentSkill = Instantiate(listToSpawn[skillIndex], skillSpawnPos, Quaternion.identity);
+        currentSkill = Instantiate(listToSpawn[skillIndex].skill, skillSpawnPos, Quaternion.identity);
+        timer = listToSpawn[skillIndex].duration;
     }
     //     void firstSkill(GameObject skill)
     //     {
@@ -123,6 +135,7 @@ public class BossBasic : Enemy
     }
     void MoveToNextPhase()
     {
+        AudioManager.PlaySFX(SoundType.BOSS_SCREAM,0.8f);
         switch (bossPhase)
         {
             case BossPhase.FirstPhase:
@@ -137,10 +150,23 @@ public class BossBasic : Enemy
                     wasDead = true;
                     SetRunning(true);
                     rigidbody2D.gravityScale = 1;
-                    Destroy(gameObject, 5f);
+                    AudioManager.PlaySFX(SoundType.BOSS_SCREAM,0.6f);
+                    bossHealthBar.GetComponent<RectTransform>().anchoredPosition = new Vector3(0,-1000,0);
+                    Destroy(gameObject, 2f);
+                    logicGameHandler.winGame();
                 }
-                transform.Rotate(new Vector3(0, 90, 0));
                 break;
         }
     }
+    public override void takeDamage(float damage)
+    {
+        base.takeDamage(damage);
+        AudioManager.PlaySFX(SoundType.BOSS_HURT,0.6f);
+    }
+}
+[Serializable]
+public struct SkillSet
+{
+    public GameObject skill;
+    public float duration;
 }

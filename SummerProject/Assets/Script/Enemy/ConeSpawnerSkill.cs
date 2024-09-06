@@ -84,6 +84,7 @@ public class ConeSpawnerSkill : MonoBehaviour
 
         for (int i = 0; i < projectilesPerWave; i++)
         {
+            List<string> add = new List<string>();
             // Calculate the current angle
             float currentAngle = startAngle + (angleStep * i);
 

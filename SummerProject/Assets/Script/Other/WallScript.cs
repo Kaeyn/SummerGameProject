@@ -14,7 +14,7 @@ public class WallScript : MonoBehaviour
     {
         if(collision.gameObject.tag != "Player")
         {
-            Destroy(collision.gameObject);
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
         }
     }
 

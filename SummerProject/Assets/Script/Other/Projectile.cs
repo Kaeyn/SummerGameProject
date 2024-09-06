@@ -5,6 +5,10 @@ using UnityEngine;
     {
         public float speed = 10f;
         private Vector3 direction;
+        protected LogicGameHandler logicGameHandler;
+        void Start() {
+            logicGameHandler = GameObject.Find("GameLogicHandler").GetComponent<LogicGameHandler>();
+        }
 
         void Update()
         {
@@ -35,11 +39,4 @@ using UnityEngine;
                 Destroy(gameObject);
             }
         }
-    // Use this for initialization
-    void Start()
-        {
-
-        }
-
-        // Update is called once per frame
     }

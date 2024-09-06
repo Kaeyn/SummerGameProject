@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2209064810519649900}
   m_Layer: 0
   m_Name: 3rdSkill
-  m_TagString: Untagged
+  m_TagString: projectiles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,4 +46,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laserFocus: {fileID: 8380678332310367520, guid: aeefb519cc94a8f408b43c71b8c343e0, type: 3}
   laserBeam: {fileID: 1207054884235577211, guid: 1a8e4d7d97395f74ea9177ee8c28848d, type: 3}
-  laserBeamPos: {x: -2.5, y: 3.5, z: 0}

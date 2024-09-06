@@ -147,17 +147,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  health: 20
+  health: 50
   timer: 5
   bossPhase: 0
   amplitude: 2.5
   initialY: 0
   xSkillOffset: -2
   firstSkillHolder:
-  - {fileID: 8294176090438870396, guid: d11a98631abaf8d40857a8be407f4b39, type: 3}
-  - {fileID: 1220531967291986270, guid: 63d72014f217ae04cb2021678d72cac4, type: 3}
+  - skill: {fileID: 8294176090438870396, guid: d11a98631abaf8d40857a8be407f4b39, type: 3}
+    duration: 3
+  - skill: {fileID: 3407946157756577588, guid: 801d0737e13ffa04997fb43ce673963c, type: 3}
+    duration: 5
   secondSkillHolder:
-  - {fileID: 8294176090438870396, guid: d11a98631abaf8d40857a8be407f4b39, type: 3}
-  - {fileID: 3407946157756577588, guid: 801d0737e13ffa04997fb43ce673963c, type: 3}
-  - {fileID: 1220531967291986270, guid: 63d72014f217ae04cb2021678d72cac4, type: 3}
-  - {fileID: 5824408225094895968, guid: d31e28ca7e578234e88a85899e030808, type: 3}
+  - skill: {fileID: 8294176090438870396, guid: d11a98631abaf8d40857a8be407f4b39, type: 3}
+    duration: 3
+  - skill: {fileID: 3407946157756577588, guid: 801d0737e13ffa04997fb43ce673963c, type: 3}
+    duration: 5
+  - skill: {fileID: 1220531967291986270, guid: 63d72014f217ae04cb2021678d72cac4, type: 3}
+    duration: 5
+  - skill: {fileID: 5824408225094895968, guid: d31e28ca7e578234e88a85899e030808, type: 3}
+    duration: 10

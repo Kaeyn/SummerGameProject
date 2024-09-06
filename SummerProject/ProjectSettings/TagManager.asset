@@ -8,6 +8,12 @@ TagManager:
   - bullet
   - blockable
   - projectiles
+  - slider
+  - wall
+  - reward
+  - Audio
+  - boss
+  - bossHealthText
   layers:
   - Default
   - TransparentFX

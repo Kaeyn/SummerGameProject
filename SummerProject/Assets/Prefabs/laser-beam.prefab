@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 7795282034593084073}
   - component: {fileID: 1320846831780823619}
   - component: {fileID: 5914919190891516716}
-  - component: {fileID: 3074807063877447415}
+  - component: {fileID: 5091826701782107195}
+  - component: {fileID: 5998510315860404385}
+  - component: {fileID: 8756815013784262291}
   m_Layer: 0
   m_Name: laser-beam
   m_TagString: projectiles
@@ -106,9 +108,9 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!68 &3074807063877447415
-EdgeCollider2D:
+  m_Constraints: 7
+--- !u!61 &5091826701782107195
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -120,21 +122,53 @@ EdgeCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.57819223, y: 0.000000059604645}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 19.01, y: 3.51}
+    newSize: {x: 19.01, y: 3.51}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 13.59237, y: 1.3080012}
   m_EdgeRadius: 0
-  m_Points:
-  - {x: 9.214856, y: -0.43661463}
-  - {x: -5.786866, y: -0.3844105}
-  - {x: -7.3698096, y: -1.7630874}
-  - {x: -8.73348, y: -1.5212955}
-  - {x: -9.346824, y: -0.58132845}
-  - {x: -9.040558, y: 1.1709883}
-  - {x: -8.064865, y: 1.6980165}
-  - {x: -7.4783144, y: 1.7137126}
-  - {x: -5.839202, y: 0.502997}
-  - {x: 9.286398, y: 0.52638996}
-  - {x: 9.232116, y: -0.4366147}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
+--- !u!70 &5998510315860404385
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5555635865291555975}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -7.6252284, y: -0.14077866}
+  m_Size: {x: 2.596763, y: 2.8832476}
+  m_Direction: 0
+--- !u!95 &8756815013784262291
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5555635865291555975}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2fb4da601284eb847b2d66e54d4c5e42, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
